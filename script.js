@@ -1,21 +1,3 @@
-// Esse tipo de comentário que estão antes de todas as funções são chamados de JSdoc,
-// experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições! 
-
-// Fique a vontade para modificar o código já escrito e criar suas próprias funções!
-
-function loadingRequest() {
-  const patternSection = document.querySelector('.items');
-  const span = document.createElement('span');
-  span.classList = 'loading';
-  span.innerHTML = 'carregando...';
-  patternSection.appendChild(span);
-}
-
-function finishLoadElement() {
-  const span = document.querySelector('.loading');
-  span.remove();
-}
-
 // Atualizar preço total do carrinho de compras
 function updateTotalPrice() {
   const data = JSON.parse(getSavedCartItems());
@@ -26,6 +8,21 @@ function updateTotalPrice() {
   } else {
     totalPrice.innerHTML = `R$ ${0}`;
   }
+}
+
+// Carrega elemento de loading na requisição da API
+function loadingRequest() {
+  const patternSection = document.querySelector('.items');
+  const span = document.createElement('span');
+  span.classList = 'loading';
+  span.innerHTML = 'carregando...';
+  patternSection.appendChild(span);
+}
+
+// Apaga elemento loading
+function finishLoadElement() {
+  const span = document.querySelector('.loading');
+  span.remove();
 }
 
 function saveLocalStorage(cartItem) {
@@ -119,6 +116,7 @@ const createCartItemElement = ({ id, title, price }) => {
   return li;
 };
 
+// Seleciona o botão no elemento do produto
 const selectElement = async (event) => {
   const btnClick = event.target;
   if (!btnClick.matches('.item__add')) return;
