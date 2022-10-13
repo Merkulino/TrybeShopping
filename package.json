@@ -1,0 +1,29 @@
+{
+  "name": "trybe_shopping",
+  "version": "1.0.0",
+  "description": "Sistema que simula sistema de carrinho de um e-commerce utilizando API do Mercado Livre",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Merkulino/TrybeShopping.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "trybe"
+  ],
+  "author": "Melqui Brito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Merkulino/TrybeShopping/issues"
+  },
+  "homepage": "https://github.com/Merkulino/TrybeShopping#readme",
+  "dependencies": {
+    "jest": "^29.1.2"
+  }
+}
