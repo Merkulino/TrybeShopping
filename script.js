@@ -43,9 +43,9 @@ function saveLocalStorage(cartItem) {
  * @param {string} imageSource - URL da imagem.
  * @returns {Element} Elemento de imagem do produto.
  */
-const createProductImageElement = (imageSource) => {
+const createProductImageElement = (imageSource, className) => {
   const img = document.createElement('img');
-  img.className = 'item__image';
+  img.className = className;
   img.src = imageSource;
   return img;
 };
@@ -72,13 +72,14 @@ const createCustomElement = (element, className, innerText) => {
  * @param {string} product.thumbnail - URL da imagem do produto.
  * @returns {Element} Elemento de produto.
  */
-const createProductItemElement = ({ id, title, thumbnail }) => {
+const createProductItemElement = ({ id, title, price , thumbnail }) => {
   const section = document.createElement('section');
   section.className = 'item';
 
   section.appendChild(createCustomElement('span', 'item_id', id));
+  section.appendChild(createProductImageElement(thumbnail, 'item__image'));
   section.appendChild(createCustomElement('span', 'item__title', title));
-  section.appendChild(createProductImageElement(thumbnail));
+  section.appendChild(createCustomElement('span', 'item__price', `R$ ${price}`));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
 
   return section;
@@ -95,7 +96,7 @@ const cartItemClickListener = (event) => {
   const data = JSON.parse(getSavedCartItems());
   const result = data.filter((product) => product.id !== event.target.id);
   saveCartItems(JSON.stringify(result));
-  event.target.remove();
+  event.target.parentElement.remove();
   updateTotalPrice();
 };
 
@@ -107,12 +108,22 @@ const cartItemClickListener = (event) => {
  * @param {string} product.price - Preço do produto.
  * @returns {Element} Elemento de um item do carrinho.
  */
-const createCartItemElement = ({ id, title, price }) => {
+const createCartItemElement = ({ thumbnail, id, title, price }) => {
   const li = document.createElement('li');
+  const img = createProductImageElement(thumbnail, 'item_cart_image');
+  const divSpan = createCustomElement('div', 'divSpan', '');
+  const spanTitle = createCustomElement('span', 'cart_title', title);
+  const spanPrice = createCustomElement('span', 'cart_price', `R$ ${price}`);
+  const removeProd = createCustomElement('div', 'removeProd', 'X');
+  divSpan.appendChild(spanTitle);
+  divSpan.appendChild(spanPrice);
   li.className = 'cart__item';
   li.id = id;
-  li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
-  li.addEventListener('click', cartItemClickListener);
+  li.appendChild(img);
+  li.appendChild(divSpan);
+  li.appendChild(removeProd);
+  // li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: R$ ${price}`;
+  removeProd.addEventListener('click', cartItemClickListener);
   return li;
 };
 
