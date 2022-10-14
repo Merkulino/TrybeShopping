@@ -4,9 +4,9 @@ function updateTotalPrice() {
   const totalPrice = document.querySelector('.total-price');
   if (data) {
     const result = data.reduce((acc, curr) => (acc + curr.price), 0);
-    totalPrice.innerHTML = `R$ ${result}`;
+    totalPrice.innerHTML = `Valor Total: R$ ${result}`;
   } else {
-    totalPrice.innerHTML = `R$ ${0}`;
+    totalPrice.innerHTML = `Valor Total: R$ ${0}`;
   }
 }
 
