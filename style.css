@@ -14,10 +14,16 @@ body {
   background-color: rgb(3, 52, 45);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
-  padding: 0 10%;
   height: 60px;
+}
+
+.mainHeaderContainer {
+  display: flex;
+  flex-basis: 70%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container-title {
@@ -37,7 +43,8 @@ body {
 .container-cartTitle {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 40px;
+  align-items: flex-end;
 }
 
 .container-cartTitle span {
@@ -64,6 +71,7 @@ input#checkCart:checked + .cart{
   width: 350px;
   padding: 10px;
   transition: all 200ms ease 0s;
+  border-radius: 5pt;
 }
 
 .cart .cart__items {

@@ -20,22 +20,24 @@
 
 <body>
   <header class="header">
-    <div class="container-title">
-      <span class="title"><strong>trybe</strong>shopping</span>
+    <div class="mainHeaderContainer">
+      <div class="container-title">
+        <span class="title"><strong>trybe</strong>shopping</span>
+      </div>
+      <div class="container-cartTitle">
+        <label for="checkCart" id="carrinho">
+          <i class="material-icons" style="font-size:45px;color:white">shopping_cart</i>
+        </label>
+          <input type="checkbox" id="checkCart" hidden>
+        <section class="cart">
+          <ol class="cart__items"></ol>
+          <hr>
+          <div class="txtPrice">
+            <span class="total-price">Valor Total: R$ 0</span>
+          </div>
+          <button class="empty-cart">Esvaziar carrinho</button>
+        </section>
     </div>
-    <div class="container-cartTitle">
-      <label for="checkCart" id="carrinho">
-        <i class="material-icons" style="font-size:45px;color:white">shopping_cart</i>
-      </label>
-        <input type="checkbox" id="checkCart" hidden>
-      <section class="cart">
-        <ol class="cart__items"></ol>
-        <hr>
-        <div class="txtPrice">
-          <span class="total-price">Valor Total: R$ 0</span>
-        </div>
-        <button class="empty-cart">Esvaziar carrinho</button>
-      </section>
     </div>
   </header>
   <section class="container">
