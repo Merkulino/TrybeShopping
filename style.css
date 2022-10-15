@@ -12,7 +12,7 @@ body {
 .header {
   position: fixed;
   z-index: 1;
-  background-color: rgb(3, 52, 45);
+  background-color: #032C16;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -53,7 +53,8 @@ body {
 }
 
 #carrinho {
-  width: min-content;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
 }
 
@@ -64,11 +65,12 @@ input#checkCart:checked + .cart{
 
 .cart {
   position: absolute;
-  margin-top: 65px;
+  margin-top: 60px;
   z-index: 1;
   display: none;
   flex-flow: column wrap;
-  background-color: rgb(200, 224, 197);
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(234, 234, 233);
   height: fit-content;
   width: 350px;
   padding: 10px;
@@ -77,6 +79,7 @@ input#checkCart:checked + .cart{
 }
 
 .cart .cart__items {
+  padding-left: 0;
   height: fit-content;
   overflow: auto;
   max-height: 500px;
@@ -114,13 +117,26 @@ input#checkCart:checked + .cart{
   font-weight: 800;
 }
 
+.removeProd {
+  font-weight: 900;
+  cursor: pointer;
+  height: min-content;
+}
+
 .empty-cart {
   width: 170px;
   height: 35px;
   margin: 0 auto;
-  border: 2px solid rgb(5, 52, 219);
+  border: 2px solid #4DCC34;
+  border-radius: 5pt;
   background-color: rgb(249, 249, 246);
+  color: #052E13;
   cursor: pointer;
+}
+
+.empty-cart:hover {
+  background-color: #4DCC34;
+  transition: all 300ms ease;
 }
 
 .txtPrice {
@@ -141,7 +157,7 @@ input#checkCart:checked + .cart{
 }
 
 .carousel-item img{
-  object-fit: fill !important;
+  object-fit: cover !important;
   height: 500px;
 }
 
@@ -196,13 +212,21 @@ input#checkCart:checked + .cart{
 }
 
 .item .item__add {
-  background-color: rgb(5, 52, 219);
-  border: 0;
+  background-color: #FFFFFF;
   cursor: pointer;
   margin: 8px;
+  border: 2pt solid #4DCC34;
   border-radius: 3pt;
-  padding: 10px;
-  color: white;
+  padding: 5px;
+  color: #065220;
+  font-size: 14px;
+}
+
+.item__add:hover {
+  background-color: #4DCC34;
+  color: #FFFFFF;
+  font-weight: 800;
+  transition: all 300ms ease;
 }
 
 .item .item__add:active {
@@ -231,16 +255,31 @@ input#checkCart:checked + .cart{
     flex-basis: 100%;
   }
 
+  .title {
+    font-size: 20px !important;
+  }
+
+  #carrinho {
+    width: 30px;
+    height: 30px;
+  }
+
+  .material-icons {
+    font-size: 30px !important;
+    text-align: center !important;
+  }
+
   .carousel-inner {
-    height: 40vw !important;
+    height: 45vw !important;
   }
 
   .carousel-item img {
-    height: 40vw;
+    height: 45vw;
   }
 
   .item {
-    flex-basis: 45%;
+    margin: 2px;
+    flex-basis: 48.9%;
   }
 
   .item .item__title {
@@ -250,6 +289,10 @@ input#checkCart:checked + .cart{
   .item .item__price {
     padding: 10px;
     font-size: 1rem;
+  }
+
+  .item__add {
+    font-size: 12px !important;
   }
 
   .cart {
