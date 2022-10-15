@@ -48,8 +48,20 @@ body {
   align-items: flex-end;
 }
 
-.container-cartTitle span {
-  width: min-content;
+.cart_counter {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  background-color: tomato; 
+  border-radius: 100%;
+  color: wheat;
+}
+
+.cart_counter:first-child {
+  font-size: 12px;
+  width: 17px;
+  height: 17px;
 }
 
 #carrinho {

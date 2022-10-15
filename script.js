@@ -1,3 +1,9 @@
+// Contagem de elementos no carrinho de compras
+function countItems(items) {
+  const countCart = document.querySelector('.cart_counter');
+  countCart.innerHTML = items.length;
+}
+
 // Atualizar preço total do carrinho de compras
 function updateTotalPrice() {
   const data = JSON.parse(getSavedCartItems());
@@ -31,9 +37,11 @@ function saveLocalStorage(cartItem) {
     const currentValues = JSON.parse(currentData);
     currentValues.push(cartItem);
     saveCartItems(JSON.stringify(currentValues));
+    countItems(currentValues);
   } else {
     const arr = [cartItem];
     saveCartItems(JSON.stringify(arr));
+    countItems(arr);
   }
   updateTotalPrice();
 }
@@ -92,11 +100,13 @@ const createProductItemElement = ({ id, title, price , thumbnail }) => {
  */
 const getIdFromProductItem = (product) => product.querySelector('.item_id').innerText;
 
+// Remover produto da lista do carrinho de compras
 const cartItemClickListener = (event) => {
   const data = JSON.parse(getSavedCartItems());
-  const result = data.filter((product) => product.id !== event.target.id);
+  const result = data.filter((product) => product.id !== event.target.parentElement.id);
   saveCartItems(JSON.stringify(result));
   event.target.parentElement.remove();
+  countItems(result);
   updateTotalPrice();
 };
 
@@ -145,6 +155,7 @@ function clearList() {
     li.remove();
   });
   localStorage.removeItem('cartItems');
+  countItems('');
   updateTotalPrice();
 }
 
@@ -156,8 +167,10 @@ const loadCartStorage = () => {
     products.forEach(async (product) => {
       ul.appendChild(createCartItemElement(product));
     });
+    countItems(products);
     updateTotalPrice();
   }
+
 };
 
 // FIX: Quando adiciona dois valores iguais e depois apaga um desses valores, os dois valores são excluidos juntos do LocalStorage 
