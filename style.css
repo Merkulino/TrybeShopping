@@ -64,6 +64,7 @@ input#checkCart:checked + .cart{
 .cart {
   position: absolute;
   margin-top: 65px;
+  z-index: 1;
   display: none;
   flex-flow: column wrap;
   background-color: rgb(200, 224, 197);
@@ -76,19 +77,41 @@ input#checkCart:checked + .cart{
 
 .cart .cart__items {
   height: fit-content;
-
   overflow: auto;
   max-height: 500px;
 }
 
 .cart__items .cart__item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   line-height: 20px;
   margin-bottom: 10px;
   border: 1px solid green;
   padding: 10px;
   height: max-content;
+  font-size: 10pt;
 }
 
+.item_cart_image {
+  width: 80px;
+  height: 80px;
+}
+
+.divSpan {
+  display: inline-flex;
+  flex-direction: column;
+  flex-basis: 60%;
+  justify-content: space-between;
+}
+
+.divSpan > span {
+  width: 100%;
+}
+
+.divSpan > span:last-child {
+  font-weight: 800;
+}
 
 .empty-cart {
   width: 170px;
@@ -108,6 +131,19 @@ input#checkCart:checked + .cart{
   height: 30px;
 }
 
+.carousel {
+
+}
+
+.carousel-inner {
+  height: 500px !important;
+}
+
+.carousel-item img{
+  object-fit: fill !important;
+  height: 500px;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -116,7 +152,7 @@ input#checkCart:checked + .cart{
 
 .items {
   display: flex;
-  flex-basis: 70%;
+  flex-basis: 85%;
   flex-wrap: wrap;
   justify-content: center;
   margin: 40px 0;
@@ -137,16 +173,21 @@ input#checkCart:checked + .cart{
   font-size: large;
 }
 
-.item .item__id {
+.item .item_id {
   display: none;
 }
 
 .item .item__title {
   display: flex;
-  align-items: center;
   flex-grow: 1;
   padding: 10px;
-  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.item .item__price {
+  padding: 10px;
+  font-size: 24px;
 }
 
 .item .item__image {
@@ -157,7 +198,74 @@ input#checkCart:checked + .cart{
   background-color: rgb(5, 52, 219);
   border: 0;
   cursor: pointer;
-  margin: 0;
+  margin: 8px;
+  border-radius: 3pt;
   padding: 10px;
   color: white;
+}
+
+.item .item__add:active {
+  filter: brightness(0.7);
+}
+
+@media screen and (max-width: 1215px) {
+  
+  .carousel-inner {
+    object-fit: cover !important;
+    height: 35vw !important;
+  }
+
+  .carousel-item img {
+    height: 35vw;
+  }
+
+  .items {
+    flex-basis: 95vw;
+  }
+}
+
+@media screen and (max-width: 450px) { 
+  .mainHeaderContainer {
+    justify-content: space-around;
+    flex-basis: 100%;
+  }
+
+  .carousel-inner {
+    height: 40vw !important;
+  }
+
+  .carousel-item img {
+    height: 40vw;
+  }
+
+  .item {
+    flex-basis: 45%;
+  }
+
+  .item .item__title {
+    font-size: 0.8rem;
+  }
+
+  .item .item__price {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .cart {
+    max-width: 80vw;
+  }
+
+  .divSpan > span {
+    font-size: 9pt;
+  }
+}
+
+.carousel-indicators {
+  margin-bottom: 1px !important;
+}
+
+.carousel-indicators button {
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  border-radius: 100%;
 }
