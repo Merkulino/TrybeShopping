@@ -4,6 +4,8 @@ Um site de ecommerce utilizando manipulação DOM
 
 ## O que é esse projeto
 
+Primeiro projeto do módulo de Front End 
+
 🚧 README EM CONSTRUÇÃO 🚧
 
 ## Como foi o desenvolvimento
