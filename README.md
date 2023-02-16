@@ -1,6 +1,6 @@
 # TrybeShopping - Projeto Trybe
 
-Um site de ecommerce utilizando manipulação DOM
+Um site de ecommerce utilizando manipulação DOM e a API do Mercado Livre
 
 ## O que é esse projeto
 
