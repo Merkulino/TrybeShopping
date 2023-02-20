@@ -18,6 +18,8 @@ Esse foi o meu primeiro projeto do módulo de Front End na Trybe, é um site que
 Para a parte visual do site, foi utilizado como inspiração os principais sites de e-commerce, foi desenvolvida uma página semelhante a esses sites, também decidi adicionar um carrosel do Bootstrap, com imagens de produtos relacionados. A pagina também foi desenvolvida pensando em dispositivos móveis (Mobile-First), ou seja, é possível explorar o site pelo celular. 
 E dessa forma ficou o Layout:
 
+![alt text](./useths.png)
+
 [Clique aqui](https://merkulino.github.io/TrybeShopping/) caso queira entrar no site e ver como ficou!
 
 ## Como rodar 🚀
