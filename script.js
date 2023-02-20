@@ -103,7 +103,7 @@ const getIdFromProductItem = (product) => product.querySelector('.item_id').inne
 // Remover produto da lista do carrinho de compras
 const cartItemClickListener = (event) => {
   const data = JSON.parse(getSavedCartItems());
-  const result = data.filter((product) => product.id !== event.target.parentElement.id);
+  const result = data.filter((product) => product.elementID != event.target.parentElement.id);
   saveCartItems(JSON.stringify(result));
   event.target.parentElement.remove();
   countItems(result);
@@ -118,7 +118,7 @@ const cartItemClickListener = (event) => {
  * @param {string} product.price - Preço do produto.
  * @returns {Element} Elemento de um item do carrinho.
  */
-const createCartItemElement = ({ thumbnail, id, title, price }) => {
+const createCartItemElement = ({ thumbnail, elementID, title, price }) => {
   const li = document.createElement('li');
   const img = createProductImageElement(thumbnail, 'item_cart_image');
   const divSpan = createCustomElement('div', 'divSpan', '');
@@ -128,7 +128,7 @@ const createCartItemElement = ({ thumbnail, id, title, price }) => {
   divSpan.appendChild(spanTitle);
   divSpan.appendChild(spanPrice);
   li.className = 'cart__item';
-  li.id = id;
+  li.id = elementID;
   li.appendChild(img);
   li.appendChild(divSpan);
   li.appendChild(removeProd);
@@ -145,8 +145,10 @@ const selectElement = async (event) => {
   const id = getIdFromProductItem(btnClick.parentElement);
   const product = await fetchItem(id);
 
-  ul.appendChild(createCartItemElement(product));
-  saveLocalStorage(product);
+  const elementID = Math. floor((1 + Math.random()) * 0x10000);
+  const productObj = {...product, elementID}
+  ul.appendChild(createCartItemElement(productObj));
+  saveLocalStorage(productObj);
 };
 
 function clearList() {
@@ -173,7 +175,6 @@ const loadCartStorage = () => {
 
 };
 
-// FIX: Quando adiciona dois valores iguais e depois apaga um desses valores, os dois valores são excluidos juntos do LocalStorage 
 window.onload = async () => {
   // Carregar carrinho do localStorage
   loadCartStorage();
