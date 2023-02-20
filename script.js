@@ -132,7 +132,6 @@ const createCartItemElement = ({ thumbnail, elementID, title, price }) => {
   li.appendChild(img);
   li.appendChild(divSpan);
   li.appendChild(removeProd);
-  // li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: R$ ${price}`;
   removeProd.addEventListener('click', cartItemClickListener);
   return li;
 };
